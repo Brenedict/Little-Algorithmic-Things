@@ -90,3 +90,119 @@ for (N1 ; N1 <= N2 ; N1++) {
 }
 printf("]");
 printf("\n\nNumber of items divisible by %d: %d Numbers", M, flag);
+
+**************************************************************************************************************************************************************
+//EXERCISE 4-6
+
+int daysLate, itemPrice, returnItem, total = 0;
+	
+printf("Which Item are you returning:\n1. VHS\n2. CD\n\nEnter: ");
+scanf("%d", &returnItem);
+
+if (returnItem == 1 || returnItem == 2) {
+	printf("\nNumber of days late since due date?\n");
+	scanf("%d", &daysLate);
+	
+	//setting of the price of item: CD = 50, VHS = 35
+	if (returnItem == 1) {
+		itemPrice = 35;
+	}
+	else {
+		itemPrice = 50;
+	}
+	
+	//checking of amount of days late
+	if (daysLate <= 2 && daysLate > 0) {
+		total = 10; 
+	}
+	else if (daysLate <= 4 && daysLate > 2) {
+		total = 15; 
+	}
+	else if (daysLate == 5) {
+		total = 20; 
+	}
+	else if (daysLate >= 7) {
+		total = itemPrice; 
+	}
+	else {
+		printf("\nInvalid input");
+	}
+	
+	//showing users bill
+	printf("\nLate fine fees: $%d", total);
+}
+
+else {
+	printf("\nItem not in thw options!");
+}
+
+**************************************************************************************************************************************************************
+//EXERCISE 4-7
+
+int A, i, test;
+	
+printf("Enter a non-negative integer to factor: ");
+scanf("%d", &A);
+
+if (A < 0) {
+	printf("%d is not a non-negative integer!", A);
+}
+else {
+	printf("Prime Factors of the Integer: ");
+	for (i=1;i<=A;i++) {
+		test = A % i;
+		if (test == 0) {
+			printf("%d ", i);
+			A = A / i;
+		}
+	}
+}
+
+#include <stdio.h>
+
+int main() {
+int A, i, test, arr[20], x, temp, total;
+float half;
+    
+printf("Input: ");
+scanf("%d", &A);
+temp = A;
+
+for (x=0;x<2;x++) {
+	if (x == 0) {
+		printf("Factors are: ");
+	}
+	else {
+		printf("Sum of its factor: ");
+	}
+
+	for (i=1;i<=A;i++) {
+		test = A % i;
+		if (test == 0) {
+			printf("%d ", i);
+			A = A / i;
+			total += i;
+			if (x==1 && i < A) {
+				printf("+ ");
+			}
+		}
+	}
+	A = temp;
+	printf("%s", (x==0)?"\n":"");
+	}
+
+half = temp/2.0;
+
+
+printf("= %d", total/2);
+printf("\nHalf of the number: %d/2 = %.2f", temp, half);
+
+if (total/2 > half) {
+	printf("\n%d is DWARF", temp);
+}
+else {
+	printf("\n%d is NOT DWARF", temp);
+}
+
+return 0;
+}

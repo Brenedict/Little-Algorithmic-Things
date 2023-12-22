@@ -158,51 +158,112 @@ else {
 	}
 }
 
-#include <stdio.h>
+**************************************************************************************************************************************************************
+//CASE STUDY 1
 
-int main() {
-int A, i, test, arr[20], x, temp, total;
-float half;
-    
-printf("Input: ");
+int A, i, test, product;
+	
+printf("Enter a non-negative integer to factor: ");
 scanf("%d", &A);
-temp = A;
 
-for (x=0;x<2;x++) {
-	if (x == 0) {
-		printf("Factors are: ");
-	}
-	else {
-		printf("Sum of its factor: ");
-	}
-
-	for (i=1;i<=A;i++) {
-		test = A % i;
-		if (test == 0) {
-			printf("%d ", i);
-			A = A / i;
-			total += i;
-			if (x==1 && i < A) {
-				printf("+ ");
-			}
-		}
-	}
-	A = temp;
-	printf("%s", (x==0)?"\n":"");
-	}
-
-half = temp/2.0;
-
-
-printf("= %d", total/2);
-printf("\nHalf of the number: %d/2 = %.2f", temp, half);
-
-if (total/2 > half) {
-	printf("\n%d is DWARF", temp);
+if (A < 0) {
+	printf("%d is not a non-negative integer!", A);
 }
 else {
-	printf("\n%d is NOT DWARF", temp);
+	printf("Product of Primes: ");
+	for (i=1;i<=A;) {
+		test = A % i;
+		if (test == 0) {
+			printf("%d%s", i, (i<A)?"*" :"");
+			A = (A / i);
+			product *= i;
+			(i==1)?i++ :i ;
+		}
+		else {
+			i++;
+		}
+	}
+	
+	printf(" = %d", product);
 }
 
-return 0;
+**************************************************************************************************************************************************************
+//CASE STUDY 2
+
+int i, A;
+unsigned long long total;
+
+printf("Enter a non-negative integer for factorial: ");
+scanf("%d", &A);
+
+if (A < 0) {
+	printf("%d is not a non-negative integer!", A);
 }
+
+else {
+	printf("\nFactorial: ");
+	for (A;A>=1;A--) {
+		printf("%d", A);
+		total *= A;
+		
+		printf("%s", (A>1)?"x" :"");
+	}
+}
+printf("\nTotal = %.0llu", total);
+
+**************************************************************************************************************************************************************
+//CASE STUDY 3
+
+#include <stdio.h>
+
+int DWARF(int total, float half, int temp) {
+	(total/2 > half)? printf("\n%d is DWARF", temp) :printf("\n%d is NOT DWARF", temp);
+	return 0;
+}
+
+int main() {
+    int A, i, test, x, temp, total;
+    float half;
+	    
+    printf("Input: ");
+    scanf("%d", &A);
+    temp = A;
+    if (A < 0) {
+		printf("%d is not a non-negative integer!", A);
+	}
+	
+	else {
+	    for (x=0;x<2;x++) {
+		    if (x == 0) {
+				printf("Factors are: ");
+			}
+			else {
+				printf("Sum of its factor: ");
+			}
+			for (i=1;i<=A;i++) {
+				test = A % i;
+				if (test == 0) {
+					printf("%d ", i);
+					A = A / i;
+					total += i;
+					
+					//For sum of its factor segment
+					printf("%s", (x==1 && i < A)?"+ " :"");
+				}
+				
+			}
+			A = temp;
+			printf("%s", (x==0)?"\n":"");
+		}
+		
+		half = temp/2.0;
+		
+		
+		printf("= %d", total/2);
+		printf("\nHalf of the number: %d/2 = %.2f", temp, half);
+		
+		DWARF(total, half, temp);
+	}
+    return 0;
+}
+

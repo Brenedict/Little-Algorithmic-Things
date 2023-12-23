@@ -1,3 +1,136 @@
+//Number 11
+//Write a program segment for the following using (a) if statement and (b) switch ..case statement: If the value of the integer variable ME is less than 2 and greater than 0, assign the value of ME to integer variable YOU. If the value of ME is 5, multiply variables THEY and THEM and assign the results to variable YOU. If the value of ME is 2, increment YOU by 1. If the value of ME is 7, decrement YOU by 4. Any other value of ME would display the value of YOU.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int ME, YOU, THEY, THEM;
+    
+    if (ME < 2 && ME > 0) {
+        YOU = ME;
+    }
+    
+    else if (ME == 2) {
+        YOU += 1;
+    }
+    
+    else if (ME == 5) {
+        YOU = THEY * THEM;
+    }
+    
+    else if (ME == 7) {
+        YOU -= 4;
+    }
+    
+    else {
+        printf("%d", YOU);
+    }
+    return 0;
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int ME, YOU, THEY, THEM;
+    
+    switch (ME) {
+        case 1:
+            YOU = ME;
+            break;
+        
+        case 2:
+            YOU += 1;
+            break;
+            
+        case 5: 
+            YOU = THEY * THEM;
+            break;
+            
+        case 7;
+            YOU -= 4;
+            break;
+            
+        default:
+            printf("%d", YOU);
+            break;
+    }
+    
+    return 0;
+}
+
+**************************************************************************************************************************************************************
+//Number 12
+//Write a program segment for the following using case. If the value of the character variable CHAR_VAR is ‘A' or ‘a', add 1 to integer variable JETT. If the value of CHAR_VAR is ‘B' or ‘b', subtract Y from Z giving the value to JETT. If the value of CHAR_VAR is ‘C' or ‘c', subtract Z from Y giving the value to JETT. Any other value would result to an error message “INVALID ENTRY”.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char CHAR_VAR;
+    int JETT, Z, Y;
+    
+    switch (CHAR_VAR) {
+        case 'A':
+        case 'a':
+            JETT += 1;
+            break;
+        case 'B':
+        case 'b':
+            JETT = Z - Y;
+            break;
+        case 'C':
+        case 'c':
+            JETT = Y - Z;
+            break;
+        default:
+            printf("INVALID ENTRY");
+    }
+    return 0;
+}
+
+**************************************************************************************************************************************************************
+//Number 13
+// Complete the program to produce the following output: The value of a is 25. The value of a is 10. The value of a is 0.
+
+#include <stdio.h>
+
+int main() {
+
+   int a=5, c=0;
+    x:
+        c++;
+        if(c==1) {
+            a=a*a;
+            goto x;
+        }
+    
+        else 
+            if (c==2) { 
+                a = a + a;
+                goto x;
+            }
+            else {
+    	        if (c == 3) 
+    	        a /= 2;
+    	       
+    	        else if (c == 4) 
+    	        a -= 15;
+    	        
+                else
+                a -= 10;
+                
+                printf("The value of a is %d\n", a);
+                
+                if (c < 5)
+                    goto x;
+            }         
+
+   return 0;
+}
+
+**************************************************************************************************************************************************************
 //EXERCISE 4-1
 
 // Child == 0-12 (C), Teenager == 13-19 (T), Adult >= 20 (A)

@@ -355,6 +355,7 @@ int DWARF(int total, float half, int temp) {
 }
 
 int main() {
+	//case study 3
     int A, i, test, x, temp, total;
     float half;
 	    
@@ -373,30 +374,31 @@ int main() {
 			else {
 				printf("Sum of its factor: ");
 			}
-			for (i=1;i<=A;i++) {
+			for (i=1;i<A;i++) {
 				test = A % i;
 				if (test == 0) {
-					printf("%d ", i);
-					A = A / i;
+					printf("%d", i);
 					total += i;
 					
+					//For factors segment
+					printf("%s", (x==0)?", " :"");
+					
 					//For sum of its factor segment
-					printf("%s", (x==1 && i < A)?"+ " :"");
+					printf("%s", (x==1)?" + " :"");
 				}
 				
 			}
 			A = temp;
-			printf("%s", (x==0)?"\n":"");
+			printf("\b\b %s", (x==0)?"\n":"");
 		}
 		
 		half = temp/2.0;
 		
 		
-		printf("= %d", total/2);
+		printf("\b\b = %d", total/2);
 		printf("\nHalf of the number: %d/2 = %.2f", temp, half);
 		
 		DWARF(total, half, temp);
 	}
     return 0;
 }
-
